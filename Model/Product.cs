@@ -2,11 +2,44 @@ using System.ComponentModel.DataAnnotations;
 
 public class Product {
 
-    public int productId { get; set; }
-    public string productCode { get; set; }
+    private int productId { get; set; }
+    private string productCode { get; set; }
 
     [Required(ErrorMessage = "Name is required")]
     [StringLength(255, ErrorMessage = "Name cannot be longer than 255 characters")]
-    public string? productName { get; set; }
+    private string? productName { get; set; }
+    private string? productDescription;
+
+    public Product() {}
+
+    public Product(int productId, string productCode, string productName, string productDescription) {
+        this.productId = productId;
+        this.productCode = productCode;
+        this.productName = productName;
+        this.productDescription = productDescription;
+    }
+
+    public Product(string name, string description, string code) {
+        this.productName = name;
+        this.productDescription = description;
+        this.productCode = code;
+    }
+
+    public string getProductCode() {
+        return this.productCode;
+    }
+
+    public string getProductName() {
+        return this.productName;
+    }
+
+    public string getProductDescription() {
+        return this.productDescription;
+    }
+
+    public void setProductCode(string code) {
+        this.productCode = code;
+    }
+
 
 }

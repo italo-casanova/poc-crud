@@ -21,8 +21,23 @@ televisor samsung, el producto es televisor con codigo `NNNNNNNN` color negro
 ![modeloER](./public/image.png)
 ![modelo relacional](./public/relational.png)
 
-**Para la demo solo se esta considerando que el usuario pueda realizar operaciones de
+# Consideraciones
+
+* **Para la demo solo se esta considerando que el usuario pueda realizar operaciones de
 manipulacion de datos (DML) sobre las tablas de modificacion y productos.**
+
+* se creo el atributo id en el modelo logico el cual sera una autoincremental que no tenga
+relacion semantica con los demas campos de la relacion (tabla), ya que su funcion es solo
+establecer un una relacion entre tablas, cosa que si en un futuro el campo codigo es modificado
+la integridad de los datos no se vera afectada
+
+* se estan validaciones sencillas, como no mostrar errores del tipo:
+
+    >Este producto no existe
+    >Id invalido
+
+asi no se muestra informacion de mas un posible atacante
+
 
 # Siguientes pasos
 
