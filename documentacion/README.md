@@ -30,3 +30,5 @@ manipulacion de datos (DML) sobre las tablas de modificacion y productos.**
 2. Se podran asignar permisos de modificacion a los usuarios segregandolos por alguna categoria
 y cruzando la informacion con la tabla categorias. (Autenticacion)
 3. En temas de seguridad, sanitizar el ingreso de datos (usar regex no deterministico para evitar DDOS)
+4. Dado que se almacena una credencial del usuario seria buena idea implementar un cifrado, como el aplicativo
+sera web se podria usar un middleware con jwt.
