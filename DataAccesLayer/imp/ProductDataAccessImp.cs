@@ -12,7 +12,7 @@ public class ProductDataAccessImp: ProductDataAccess {
             using (var command = connection.CreateCommand()) {
 
                 command.CommandText = @"
-                    SELECT name, description, code
+                    SELECT name, description, code, price
                     FROM Products
                     WHERE Id = @id";
 
@@ -22,9 +22,10 @@ public class ProductDataAccessImp: ProductDataAccess {
 
                     if (reader.Read()) {
                          p = new Product (
-                            reader.GetString(reader.GetOrdinal("Name")),
-                            reader.GetString(reader.GetOrdinal("Description")),
-                            reader.GetString(reader.GetOrdinal("Code")));
+                            reader.GetString(reader.GetOrdinal("name")),
+                            reader.GetString(reader.GetOrdinal("description")),
+                            reader.GetString(reader.GetOrdinal("code")),
+                            reader.GetFloat(reader.GetOrdinal("price")));
 
                     }
                     return p;
@@ -38,7 +39,9 @@ public class ProductDataAccessImp: ProductDataAccess {
             connection.Open();
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = "SELECT name, description, code  FROM product";
+                command.CommandText = @"
+                    SELECT name, description, code, price
+                    FROM product";
                 using (var reader = command.ExecuteReader())
                 {
                     var products = new List<Product>();
@@ -47,7 +50,8 @@ public class ProductDataAccessImp: ProductDataAccess {
                         var product = new Product(
                             reader.GetString(reader.GetOrdinal("name")),
                             reader.GetString(reader.GetOrdinal("description")),
-                            reader.GetString(reader.GetOrdinal("code")));
+                            reader.GetString(reader.GetOrdinal("code")),
+                            reader.GetFloat(reader.GetOrdinal("price")));
                         products.Add(product);
                     }
                     return products;
